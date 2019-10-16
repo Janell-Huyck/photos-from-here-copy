@@ -33,24 +33,25 @@ function fetchPicture(latitude, longitude) {
   )
     .then(responseObject => responseObject.json())
     .then(hydratedBody => {
-      photoObj = hydratedBody;
-      imageUrl = `https://farm${photoObj.photos.photo[pictureNumberToDisplay].farm}.staticflickr.com/${photoObj.photos.photo[pictureNumberToDisplay].server}/${photoObj.photos.photo[pictureNumberToDisplay].id}_${photoObj.photos.photo[pictureNumberToDisplay].secret}.jpg`;
-      let newDiv = document.createElement("img");
-      newDiv.src = imageUrl;
-      let destination = document.getElementById("imagesGoHere")
-      destination.appendChild(newDiv);
+      photoObj = hydratedBody;})
+    .then( function() {
+        drawNewPicture()
     });
 }
 
-function advancePicture(){
-    pictureNumberToDisplay += 1
-    if (pictureNumberToDisplay >= 5){ pictureNumberToDisplay = 0}
+function drawNewPicture(){
     imageUrl = `https://farm${photoObj.photos.photo[pictureNumberToDisplay].farm}.staticflickr.com/${photoObj.photos.photo[pictureNumberToDisplay].server}/${photoObj.photos.photo[pictureNumberToDisplay].id}_${photoObj.photos.photo[pictureNumberToDisplay].secret}.jpg`;
     let newDiv = document.createElement("img");
     newDiv.src = imageUrl;
     let destination = document.getElementById("imagesGoHere")
     destination.innerHTML = ""
     destination.appendChild(newDiv);
+}
+
+function advancePicture(){
+    pictureNumberToDisplay += 1
+    if (pictureNumberToDisplay >= 5){ pictureNumberToDisplay = 0}
+    drawNewPicture()
 
 }
 

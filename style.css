@@ -1,0 +1,23 @@
+:root {
+    --main-color: #d9b962;
+    --accent-color: #d99a62;
+}
+
+body{
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 450px;
+    border: 10px solid var(--accent-color);
+    border-radius: 5px;
+}
+
+button{
+    border-radius: 5px;
+    border: 1px solid black;
+}
